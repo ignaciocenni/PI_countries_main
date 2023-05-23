@@ -1,50 +1,45 @@
-html, body {
-    margin: 0;
-    padding: 0;
-}
-
-.conPrin {
-    background: url("../img/LandingPage.png");
-    width: 100vmax;
-    height: 100vmax;
-    display: flex;
-    justify-content: center;
-    align-content: center;
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100%;
 }
 
 .homepage {
-    margin: 40px;
-    width: 70%; 
-      
-}
-
-.imgLanding {
-    height: 50%;
-    z-index: -1;
+	text-align: center;
 }
 
 .welcome {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
+	margin-top: 20px;
 }
 
 .boton {
-    width: 100%;
-    border-radius: 10px;
-    font-size: large;
-    font-style: normal;
-    border-color: cornflowerblue;
-    color: white; 
-    padding: 7px;
-    box-shadow: 6px;
-    
-    
+	padding: 10px 20px;
+	font-size: 18px;
+	background-color: #333;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
 }
 
 .boton:hover {
-    background-color:black ;
-    color: cornflowerblue;
-    font-weight: bolder;
-    font-size: larger;
+	background-color: #555;
+}
+
+h1 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	color: white;
+	font-size: 2.5em;
+}
+
+h2 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
 }

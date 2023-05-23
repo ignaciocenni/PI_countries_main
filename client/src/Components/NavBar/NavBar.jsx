@@ -1,51 +1,65 @@
-import { React } from "react";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
-import { getCountries, getCountriesByName } from "../../Redux/actions/actions";
+import { React } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { getCountries, getCountriesByName } from '../../Redux/actions/actions';
 
-import s from "./NavBar.module.css"
+import style from './NavBar.module.css';
 
-import logo from "../img/logo.png"
+import logo from '../../assets/img/logo.png';
 
-export default function NavBar({setCurrentPage}){
+export default function NavBar({ setCurrentPage }) {
+	const dispatch = useDispatch();
+	const [name, setName] = useState('');
 
-const dispatch = useDispatch()
-const [name, setName] = useState("")
- 
-useEffect(() => {
-    dispatch(getCountries())
-}, [dispatch])
+	useEffect(() => {
+		dispatch(getCountries());
+	}, [dispatch]);
 
-function handleClick(e){
-    e.preventDefault();
-    dispatch(getCountries());
-}
+	function handleClick(e) {
+		e.preventDefault();
+		dispatch(getCountries());
+	}
 
-function handleInputChange(e){
-    dispatch(getCountriesByName(e))
-    setCurrentPage(1)
-        
-}
+	function handleInputChange(e) {
+		dispatch(getCountriesByName(e));
+		setCurrentPage(1);
+	}
 
-    
-return (
-    <div className={s.navbar}>
-    <div className={s.contLogo}>
-    <Link to= "/home"><img className={s.bothome} onClick={(e) => handleClick(e)} src={logo} alt="logo"></img></Link>
-    </div>
-    <div className={s.contSearch}>
-    <div className={s.search}>
-        <div className={s.searchtitle}>Encuentra Tu Próximo Destino</div>    
-           <input className={s.searchinp} value={name} type = "text" placeholder = "Qué país deseas visitar..."
-            onChange = {(e) => {setName(e.target.value); handleInputChange(e.target.value)}} />
-           </div>
-    </div>
-        <div className={s.contAct}>    
-        <Link to= "/activities"><button className={s.botact}>Crear Actividad</button></Link>       
-        </div>
-    </div>
-    
-)
-
+	return (
+		<div className={style.navbar}>
+			<div className={style.contLogo}>
+				<Link to='/home'>
+					<img
+						className={style.image}
+						onClick={(e) => handleClick(e)}
+						src={logo}
+						alt='logo'
+					></img>
+				</Link>
+			</div>
+			<div className={style.contSearch}>
+				<div className={style.search}>
+					<div className={style.searchtitle}>
+						Encuentra Tu Próximo Destino
+					</div>
+					<input
+						className={style.searchinp}
+						value={name}
+						type='text'
+						placeholder='Qué país deseas visitar...'
+						onChange={(e) => {
+							setName(e.target.value);
+							handleInputChange(e.target.value);
+						}}
+					/>
+				</div>
+			</div>
+			<div className={style.contAct}>
+				<Link to='/activities'>
+					<button className={style.botact}>Crear Actividad</button>
+				</Link>
+			</div>
+		</div>
+	);
 }

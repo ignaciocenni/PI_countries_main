@@ -1,54 +1,51 @@
-.card{
-    border-radius: 3%;
-    background-color: rgba(255, 255, 255, 0.443);
-    height: 250px;
-    width: 270px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column;
-    margin: 15px;
-      
+.card {
+	border-radius: 5%;
+	background-color: #1c1c1ca6;
+	height: 250px;
+	width: 270px;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	flex-direction: column;
+	margin: 15px;
 }
 
-.bandera{
-    border-radius: 4%;
-    width: 8em;
-    height: 5.5em;
-        
+.bandera {
+	border-radius: 5%;
+	width: 8em;
+	height: 5.5em;
 }
 
-.titulo{
-    color: rgb(9, 57, 154);
-    font-weight: bolder;
-    font-size: x-large;
-    text-align: center;
-    margin: 10px 0px -15px 0px ;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+.titulo {
+	color: antiquewhite;
+	font-weight: bolder;
+	font-size: x-large;
+	font-family: 'letters';
+	text-align: center;
+	margin: 10px 0px -15px 0px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 }
 
 .continente {
-    color: rgb(9, 57, 154);
-    text-align: center;
-    margin-bottom: 15px;
+	color: antiquewhite;
+	text-align: center;
+	margin-bottom: 15px;
+	font-family: 'letters';
 }
 
 .boton {
-    border-radius: 5px;
-    color:#07648f;
-    background-color: antiquewhite;
-    width: 5em;
-    padding: 3px;
-    border-color: #07648f;
-    font-family: 'Arvo', serif;
-    
+	padding: 7px 5px;
+	font-size: 15px;
+	background-color: #333;
+	color: antiquewhite;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-family: 'letters';
 }
 
 .boton:hover {
-    color: antiquewhite;
-    background-color: #07648f;
-    border-color: #07648f;
-    width: 5.2em;
+	background-color: #555;
 }

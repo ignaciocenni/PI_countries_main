@@ -17,8 +17,9 @@
 .boton {
 	padding: 10px 20px;
 	font-size: 18px;
+	font-family: 'letters';
 	background-color: #333;
-	color: #fff;
+	color: antiquewhite;
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;
@@ -33,13 +34,15 @@ h1 {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	color: white;
+	color: antiquewhite;
 	font-size: 2.5em;
+	font-family: 'letters';
 }
 
 h2 {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: white;
+	color: antiquewhite;
+	font-family: 'letters';
 }

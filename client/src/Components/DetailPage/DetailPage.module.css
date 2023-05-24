@@ -47,7 +47,7 @@
 
 .conact {
 	width: 300px;
-	height: 200px;
+	height: fit-content;
 	border-radius: 5%;
 	margin: 40px;
 	background-color: #1c1c1cc0;

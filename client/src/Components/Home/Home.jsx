@@ -198,7 +198,7 @@ export default function Home() {
 							<option
 								value={activity === 'All' ? activity : 'All'}
 							>
-								Todos
+								Todas
 							</option>
 							<option
 								value={activity === 'none' ? activity : 'none'}
@@ -225,7 +225,6 @@ export default function Home() {
 					</button>
 				</div>
 			</div>
-
 			<div className={style.contenedorCards}>
 				{currentCountries.length ? (
 					currentCountries.map(
@@ -247,7 +246,6 @@ export default function Home() {
 					<h1>No hay paises</h1>
 				)}
 			</div>
-
 			<div className={style.paginado}>
 				<Paginado
 					countriesPerPage={countriesPerPage}

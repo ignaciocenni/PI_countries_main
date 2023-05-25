@@ -19,13 +19,14 @@ export default function Home() {
 	const dispatch = useDispatch();
 	const allCountries = useSelector((state) => state.countries);
 	const activities = useSelector((state) => state.allActivities);
-
-	// eslint-disable-next-line no-unused-vars
-	const [orden, setOrden] = useState('');
-
 	const [currentPage, setCurrentPage] = useState(1);
 	// eslint-disable-next-line no-unused-vars
 	let [countriesPerPage, setCountriesPerPage] = useState(10);
+
+	const [continent, setContinent] = useState('');
+	const [sort, setSort] = useState('');
+	const [population, setPopulation] = useState('');
+	const [activity, setActivity] = useState('');
 
 	const indexOfLastCountrie = currentPage * countriesPerPage;
 	const indexOfFirstCountrie = indexOfLastCountrie - countriesPerPage;
@@ -44,29 +45,39 @@ export default function Home() {
 	}, [dispatch]);
 
 	function handleFilteredCountrie(event) {
+		setContinent(event.target.value);
 		dispatch(filterByContinents(event.target.value));
 	}
 
 	function handleSort(event) {
 		event.preventDefault();
+		setSort(event.target.value);
 		dispatch(orderByName(event.target.value));
 		setCurrentPage(1);
-		setOrden(`Ordenado ${event.target.value}`);
 	}
 
 	function handleSortPop(event) {
 		event.preventDefault();
+		setPopulation(event.target.value);
 		dispatch(orderByPop(event.target.value));
 		setCurrentPage(1);
-		setOrden(`Ordenado ${event.target.value}`);
 	}
 
 	function handleFilterByAct(event) {
 		event.preventDefault();
-		event.target.value === 'none'
-			? dispatch(getCountries())
-			: dispatch(filterByAct(event.target.value));
+		setActivity(event.target.value);
+		dispatch(filterByAct(event.target.value));
 		setCurrentPage(1);
+	}
+
+	function handleClearFilters() {
+		setSort('All');
+		setPopulation('All');
+		setContinent('All');
+		setActivity('All');
+		setCurrentPage(1);
+
+		return dispatch(getCountries());
 	}
 
 	return (
@@ -81,10 +92,17 @@ export default function Home() {
 					<select
 						className={style.select}
 						onChange={(e) => handleSort(e)}
+						value={sort}
 					>
-						<option></option>
-						<option value='asc'>Ascendente</option>
-						<option value='desc'>Descendente</option>
+						<option value={sort === 'All' ? sort : 'All'}>
+							Todos
+						</option>
+						<option value={sort === 'asc' ? sort : 'asc'}>
+							Ascendente
+						</option>
+						<option value={sort === 'desc' ? sort : 'desc'}>
+							Descendente
+						</option>
 					</select>
 				</div>
 				<div>
@@ -92,10 +110,23 @@ export default function Home() {
 					<select
 						className={style.select}
 						onChange={(e) => handleSortPop(e)}
+						value={population}
 					>
-						<option></option>
-						<option value='mayp'>Menor a Mayor</option>
-						<option value='menp'>Mayor a Menor</option>
+						<option
+							value={population === 'All' ? population : 'All'}
+						>
+							Todos
+						</option>
+						<option
+							value={population === 'mayp' ? population : 'mayp'}
+						>
+							Menor a Mayor
+						</option>
+						<option
+							value={population === 'menp' ? population : 'menp'}
+						>
+							Mayor a Menor
+						</option>
 					</select>
 				</div>
 				<div>
@@ -103,14 +134,55 @@ export default function Home() {
 					<select
 						className={style.select}
 						onChange={(e) => handleFilteredCountrie(e)}
+						value={continent}
 					>
-						<option value={'All'}> </option>
-						<option value={'Americas'}>Americas</option>
-						<option value={'Africa'}>África</option>
-						<option value={'Asia'}>Asia</option>
-						<option value={'Europe'}>Europa</option>
-						<option value={'Oceania'}>Oceanía</option>
-						<option value={'Antarctica'}>Antárctica</option>
+						<option value={continent === 'All' ? continent : 'All'}>
+							Todos
+						</option>
+						<option
+							value={
+								continent === 'Americas'
+									? continent
+									: 'Americas'
+							}
+						>
+							Americas
+						</option>
+						<option
+							value={
+								continent === 'Africa' ? continent : 'Africa'
+							}
+						>
+							África
+						</option>
+						<option
+							value={continent === 'Asia' ? continent : 'Asia'}
+						>
+							Asia
+						</option>
+						<option
+							value={
+								continent === 'Europe' ? continent : 'Europe'
+							}
+						>
+							Europa
+						</option>
+						<option
+							value={
+								continent === 'Oceania' ? continent : 'Oceania'
+							}
+						>
+							Oceanía
+						</option>
+						<option
+							value={
+								continent === 'Antarctica'
+									? continent
+									: 'Antarctica'
+							}
+						>
+							Antárctica
+						</option>
 					</select>
 				</div>
 				<div>
@@ -121,15 +193,36 @@ export default function Home() {
 						<select
 							className={style.select}
 							onChange={(e) => handleFilterByAct(e)}
+							value={activity}
 						>
-							<option value='none'></option>
+							<option
+								value={activity === 'All' ? activity : 'All'}
+							>
+								Todos
+							</option>
+							<option
+								value={activity === 'none' ? activity : 'none'}
+							></option>
 							{activities.map((e) => (
-								<option value={e.name} key={e.id}>
+								<option
+									value={
+										activity === e.name ? activity : e.name
+									}
+									key={e.id}
+								>
 									{e.name}
 								</option>
 							))}
 						</select>
 					)}
+				</div>
+				<div>
+					<button
+						className={style.buttonClearFilters}
+						onClick={handleClearFilters}
+					>
+						Borrar filtros
+					</button>
 				</div>
 			</div>
 

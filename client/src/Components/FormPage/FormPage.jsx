@@ -179,6 +179,8 @@ export default function FormPage() {
 						<input
 							className={style.inputs}
 							type='number'
+							min='1'
+							max='5'
 							value={input.difficulty}
 							name='difficulty'
 							onChange={(e) => handleChange(e)}
@@ -192,6 +194,8 @@ export default function FormPage() {
 						<input
 							className={style.inputs}
 							type='number'
+							min='1'
+							max='24'
 							value={input.duration}
 							name='duration'
 							onChange={(e) => handleChange(e)}

@@ -243,7 +243,7 @@ export default function Home() {
 						}
 					)
 				) : (
-					<h1>No hay paises</h1>
+					<h1>{error.message}</h1>
 				)}
 			</div>
 			<div className={style.paginado}>
